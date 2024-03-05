@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SliderProduct } from "./sliderProducts";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
@@ -10,23 +10,28 @@ interface ProductI {
 
 const Slider = () => {
   const [slider, setSlider] = useState(0);
+  const numOfslider = SliderProduct.length;
 
   function leftMove() {
-    for (let i = 3; i > 0; i--) {
-      setSlider(i);
+    if (slider !== numOfslider - 1) {
+      setSlider(slider + 1);
     }
   }
   function rightMove() {
-    for (let i = 0; i < 3; i++) {
-      setSlider(i);
+    if (slider !== 0) {
+      setSlider(slider - 1);
     }
   }
+
+  useEffect(() => {
+    setSlider(0);
+  }, []);
 
   return (
     <div className="w-full flex justify-center">
       {SliderProduct.map((product: ProductI, index: number) => {
         return (
-          <div key={index}>
+          <div key={index} className="">
             {slider === index && (
               <div className="flex items-center">
                 <FaArrowLeft
