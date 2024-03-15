@@ -1,3 +1,4 @@
+import Carousel from "react-multi-carousel";
 import Hero from "../../components/hero/Hero";
 import Slider from "../../components/slider/Slider";
 
